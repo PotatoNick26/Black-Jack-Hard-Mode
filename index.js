@@ -4,7 +4,7 @@ let player = {
   };
   let dealer = {
     name: "Dealer",
-    chips: 400
+    chips: 750
   };
   let inDebt = false;
   let cards = [];
@@ -89,12 +89,28 @@ let player = {
       messageEl.textContent = "._.";
     }
   }
+
+  function dnewCard() {
+    
+        let dcard = getRandomCard();
+        dsum += dcard;
+        dcards.push(dcard);
+        if (dsum < 11) {
+          dnewCard()
+            }
+        
+  }
+
   function renderd() {
     let dfirstCard = getRandomCard();
     let dsecondCard = getRandomCard();
     dcards = [dfirstCard, dsecondCard];
     dsum = dfirstCard + dsecondCard;
-  
+  if (dsum < 11) {
+dnewCard()
+  }
+
+
     dcardsEl.textContent = "Dealer's Cards: ";
     for (let o = 0; o < dcards.length; o++) {
       dcardsEl.textContent += dcards[o] + " ";
